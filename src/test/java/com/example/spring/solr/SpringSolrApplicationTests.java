@@ -1,4 +1,4 @@
-package com.example.springsolr;
+package com.example.spring.solr;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
