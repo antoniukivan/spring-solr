@@ -1,8 +1,7 @@
 package com.example.spring.solr.repository;
 
+import com.example.spring.solr.Util;
 import com.example.spring.solr.model.DataFile;
-import com.example.spring.solr.model.Human;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +16,8 @@ class DataFileRepositoryTest {
 
     @Test
     public void saveAll() {
-        List<DataFile> dataFiles = createAlbums();
-        Iterable<DataFile> savedDataFiles = dataFileRepository.saveAll(createAlbums());
+        List<DataFile> dataFiles = Util.createDataFiles();
+        Iterable<DataFile> savedDataFiles = dataFileRepository.saveAll(dataFiles);
         Assertions.assertEquals(dataFiles, savedDataFiles);
 
         Optional<DataFile> dataFileOptional = dataFileRepository.findById(10L);
@@ -29,20 +28,5 @@ class DataFileRepositoryTest {
         Assertions.assertEquals(dataFiles.get(10).getId(), dataFile.getId());
         Assertions.assertEquals(dataFiles.get(10).getUploader(), dataFile.getUploader());
         Assertions.assertEquals(dataFiles.get(10).getFilesize(), dataFile.getFilesize());
-    }
-
-    public List<DataFile> createAlbums() {
-        List<DataFile> dataFiles = new ArrayList<>();
-
-        for (int i = 0; i < 50; i++) {
-            DataFile dataFile = DataFile.builder()
-                    .id((long) i)
-                    .uploader(Human.builder().id((long) i).build())
-                    .filesize(i)
-                    .build();
-            dataFiles.add(dataFile);
-        }
-
-        return dataFiles;
     }
 }

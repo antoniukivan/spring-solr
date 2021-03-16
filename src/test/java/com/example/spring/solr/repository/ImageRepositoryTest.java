@@ -1,7 +1,7 @@
 package com.example.spring.solr.repository;
 
+import com.example.spring.solr.Util;
 import com.example.spring.solr.model.Image;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
@@ -16,8 +16,8 @@ class ImageRepositoryTest {
 
     @Test
     public void saveAll() {
-        List<Image> images = createAlbums();
-        Iterable<Image> savedImage = imageRepository.saveAll(createAlbums());
+        List<Image> images = Util.createImages();
+        Iterable<Image> savedImage = imageRepository.saveAll(images);
         Assertions.assertEquals(images, savedImage);
 
         Optional<Image> imageOptional = imageRepository.findById(10L);
@@ -29,21 +29,5 @@ class ImageRepositoryTest {
         Assertions.assertEquals(images.get(10).getFormat(), image.getFormat());
         Assertions.assertEquals(images.get(10).getUrl(), image.getUrl());
         Assertions.assertEquals(images.get(10).getHeight(), image.getHeight());
-    }
-
-    public List<Image> createAlbums() {
-        List<Image> humans = new ArrayList<>();
-
-        for (int i = 0; i < 80; i++) {
-            Image image = Image.builder()
-                    .id((long) i)
-                    .format(i + "")
-                    .url(i + "")
-                    .height(i)
-                    .build();
-            humans.add(image);
-        }
-
-        return humans;
     }
 }

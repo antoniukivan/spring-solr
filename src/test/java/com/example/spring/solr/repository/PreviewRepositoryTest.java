@@ -1,9 +1,7 @@
 package com.example.spring.solr.repository;
 
-import com.example.spring.solr.model.DataFile;
-import com.example.spring.solr.model.Image;
+import com.example.spring.solr.Util;
 import com.example.spring.solr.model.Preview;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
@@ -18,8 +16,8 @@ class PreviewRepositoryTest {
 
     @Test
     public void saveAll() {
-        List<Preview> previews = createAlbums();
-        Iterable<Preview> savedPreview = previewRepository.saveAll(createAlbums());
+        List<Preview> previews = Util.createPreviews();
+        Iterable<Preview> savedPreview = previewRepository.saveAll(previews);
         Assertions.assertEquals(previews, savedPreview);
 
         Optional<Preview> previewOptional = previewRepository.findById(10L);
@@ -30,20 +28,5 @@ class PreviewRepositoryTest {
         Assertions.assertEquals(previews.get(10).getId(), preview.getId());
         Assertions.assertEquals(previews.get(10).getPreview(), preview.getPreview());
         Assertions.assertEquals(previews.get(10).getFile(), preview.getFile());
-    }
-
-    public List<Preview> createAlbums() {
-        List<Preview> previews = new ArrayList<>();
-
-        for (int i = 0; i < 90; i++) {
-            Preview preview = Preview.builder()
-                    .id((long) i)
-                    .preview(Image.builder().id((long) i).build())
-                    .file(DataFile.builder().id((long) i).build())
-                    .build();
-            previews.add(preview);
-        }
-
-        return previews;
     }
 }
