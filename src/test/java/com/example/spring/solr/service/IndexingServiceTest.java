@@ -8,5 +8,6 @@ class IndexingServiceTest {
 
     @Test
     void indexing() {
+
     }
 }
