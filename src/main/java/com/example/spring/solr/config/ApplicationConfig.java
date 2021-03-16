@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.ConcurrentUpdateSolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -38,7 +39,7 @@ public class ApplicationConfig {
 
     @Bean
     public SolrClient solrClient() {
-        return new ConcurrentUpdateSolrClient.Builder(baseUrl).build();
+        return new HttpSolrClient.Builder(baseUrl).build();
     }
 
     @Bean
