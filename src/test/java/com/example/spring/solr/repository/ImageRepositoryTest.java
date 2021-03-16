@@ -31,7 +31,7 @@ class ImageRepositoryTest {
         Assertions.assertEquals(images.get(10).getHeight(), image.getHeight());
     }
 
-    private List<Image> createAlbums() {
+    public List<Image> createAlbums() {
         List<Image> humans = new ArrayList<>();
 
         for (int i = 0; i < 80; i++) {

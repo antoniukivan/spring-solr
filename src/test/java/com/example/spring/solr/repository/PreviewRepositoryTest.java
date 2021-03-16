@@ -32,7 +32,7 @@ class PreviewRepositoryTest {
         Assertions.assertEquals(previews.get(10).getFile(), preview.getFile());
     }
 
-    private List<Preview> createAlbums() {
+    public List<Preview> createAlbums() {
         List<Preview> previews = new ArrayList<>();
 
         for (int i = 0; i < 90; i++) {

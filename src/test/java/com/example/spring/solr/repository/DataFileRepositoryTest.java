@@ -31,7 +31,7 @@ class DataFileRepositoryTest {
         Assertions.assertEquals(dataFiles.get(10).getFilesize(), dataFile.getFilesize());
     }
 
-    private List<DataFile> createAlbums() {
+    public List<DataFile> createAlbums() {
         List<DataFile> dataFiles = new ArrayList<>();
 
         for (int i = 0; i < 50; i++) {

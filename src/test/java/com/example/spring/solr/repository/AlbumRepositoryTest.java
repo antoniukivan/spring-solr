@@ -32,7 +32,7 @@ class AlbumRepositoryTest {
         Assertions.assertEquals(albums.get(4).getPhotos(), album.getPhotos());
     }
 
-    private List<Album> createAlbums() {
+    public List<Album> createAlbums() {
         List<Album> albums = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {

@@ -32,7 +32,7 @@ class HumanRepositoryTest {
         Assertions.assertEquals(humans.get(10).getName(), human.getName());
     }
 
-    private List<Human> createAlbums() {
+    public List<Human> createAlbums() {
         List<Human> humans = new ArrayList<>();
 
         for (int i = 0; i < 70; i++) {
