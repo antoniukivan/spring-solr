@@ -4,7 +4,6 @@ import com.example.spring.solr.util.Converters;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.solr.client.solrj.SolrClient;
-import org.apache.solr.client.solrj.impl.ConcurrentUpdateSolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +50,8 @@ public class ApplicationConfig {
 
     @Bean
     public SolrConverter mappingSolrConverter() {
-        final MappingSolrConverter converter = new MappingSolrConverter(new SimpleSolrMappingContext());
+        final MappingSolrConverter converter
+                = new MappingSolrConverter(new SimpleSolrMappingContext());
         converter.setCustomConversions(customConversions());
         return converter;
     }
